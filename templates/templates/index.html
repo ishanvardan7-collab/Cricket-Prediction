@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cricket Predictor</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: white;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        width: 350px;
+        text-align: center;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        font-size: 28px;
+    }
+
+    select, button {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+    }
+
+    select {
+        background: rgba(255,255,255,0.2);
+        color: white;
+    }
+
+    button {
+        background: #ff9800;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+        font-weight: bold;
+    }
+
+    button:hover {
+        background: #ff5722;
+        transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px);}
+        to { opacity: 1; transform: translateY(0);}
+    }
+
+    .player-preview {
+        margin-top: 15px;
+        font-size: 18px;
+        color: #ffcc80;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🏏 Cricket Predictor</h1>
+
+    <form action="/predict" method="POST">
+
+        <select name="player" id="player" onchange="showPlayer()">
+            <option value="dhoni">MS Dhoni</option>
+            <option value="kohli">Virat Kohli</option>
+            <option value="rohit">Rohit Sharma</option>
+        </select>
+
+        <select name="match_type">
+            <option value="ODI">ODI</option>
+            <option value="T20">T20</option>
+        </select>
+
+        <button type="submit">🚀 Predict Score</button>
+    </form>
+
+    <div class="player-preview" id="preview">
+        Selected: MS Dhoni
+    </div>
+</div>
+
+<script>
+function showPlayer() {
+    let player = document.getElementById("player").value;
+    let text = "";
+
+    if(player === "dhoni") text = "MS Dhoni 🧠 Captain Cool";
+    if(player === "kohli") text = "Virat Kohli 🔥 Run Machine";
+    if(player === "rohit") text = "Rohit Sharma 💣 Hitman";
+
+    document.getElementById("preview").innerHTML = "Selected: " + text;
+}
+</script>
+
+</body>
+</html>
